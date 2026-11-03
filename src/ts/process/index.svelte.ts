@@ -758,6 +758,9 @@ export async function sendChat(chatProcessIndex = -1,arg:{
                         content = (risuChatParser(content, {chara: currentChar, role: card.role}))
                     }
                     else if(card.type2 === 'main'){
+                        if(currentChar.systemPrompt){
+                            content = positionParser(currentChar.systemPrompt, posType).replaceAll('{{original}}', content)
+                        }
                         content = (risuChatParser(content, {chara: currentChar, role: card.role}))
                     }
                     else{
@@ -1357,6 +1360,9 @@ export async function sendChat(chatProcessIndex = -1,arg:{
                         content = (risuChatParser(content, {chara: currentChar, role: card.role}))
                     }
                     else if(card.type2 === 'main'){
+                        if(currentChar.systemPrompt){
+                            content = positionParser(currentChar.systemPrompt, posType).replaceAll('{{original}}', content)
+                        }
                         content = (risuChatParser(content, {chara: currentChar, role: card.role}))
                     }
                     else{
